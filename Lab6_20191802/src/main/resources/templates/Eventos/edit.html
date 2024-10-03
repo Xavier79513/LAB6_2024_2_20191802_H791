@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pagina Principal</title>
+    <title>Pagina Editar</title>
     <style>
 
         body {
@@ -73,25 +73,29 @@
     <!-- Navbar End -->
 </div>
 </br></br></br>
-<h1> Estos son nuestros Eventos</h1>
-<p> Aqui podras encontrar todos los eventos que tenemos para ti</p>
-<button>Crear Evento</button>
-<table class="table" border="5">
-    <tr>
-        <th>Nombre</th>
-        <th>Fecha</th>
-        <th>Asistentes Esperados</th>
-        <th>Acciones</th>
-    </tr>
-    <tr th:each="evento : ${listarEventos}">
-        <td th:text="${evento.nombreEvento}"></td>
-        <td th:text="${evento.fechaEvento}"></td>
-        <td th:text="${evento.asistentesEsperados}"></td>
-        <td><a class="btn btn-primary"
-               th:href="@{'/Evento/edit' + '?id=' + ${evento.eventoId}}">Editar</a>
-        </td>
-    </tr>
-</table>
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<h1>Editar Evento</h1>
+<main>
+    <div class="container px-4 py-5">
+        <h1 class="pb-2 mb-3 border-bottom">Editar Producto</h1>
+        <form method="post" th:action="@{'/product/save'}" th:object="${eventos}" class="mt-2">
+            <input th:field="*{eventoId}" name="id" type="hidden"/>
+            <div class="mb-3">
+                <label class="form-label">Nombre del Evento</label>
+                <label>
+                    <input th:field="*{nombreEvento}" type="text" class="form-control">
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cantidad</label>
+                <input th:field="${eventos.asistentesEsperados}" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha</label>
+                <input th:field="${eventos.fechaEvento}" type="date" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</main>
 </body>
 </html>

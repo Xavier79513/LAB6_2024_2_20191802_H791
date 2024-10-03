@@ -73,23 +73,18 @@
     <!-- Navbar End -->
 </div>
 </br></br></br>
-<h1> Estos son nuestros Eventos</h1>
-<p> Aqui podras encontrar todos los eventos que tenemos para ti</p>
-<button>Crear Evento</button>
+<h1> Estos son nuestros Artistas asociados</h1>
+<p> Aqui podras encontrar todos los artistas que tenemos para ti</p>
 <table class="table" border="5">
     <tr>
         <th>Nombre</th>
-        <th>Fecha</th>
-        <th>Asistentes Esperados</th>
-        <th>Acciones</th>
+        <th>Género</th>
+        <th>Teléfono</th>
     </tr>
-    <tr th:each="evento : ${listarEventos}">
-        <td th:text="${evento.nombreEvento}"></td>
-        <td th:text="${evento.fechaEvento}"></td>
-        <td th:text="${evento.asistentesEsperados}"></td>
-        <td><a class="btn btn-primary"
-               th:href="@{'/Evento/edit' + '?id=' + ${evento.eventoId}}">Editar</a>
-        </td>
+    <tr th:each="artistas : ${listarArtistas}">
+        <td th:text="${artistas.nombreArtista}"></td>
+        <td th:text="${artistas.generoArtista}"></td>
+        <td th:text="${artistas.telefonoArtista}"></td>
     </tr>
 </table>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
